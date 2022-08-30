@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index()
     {
         //
-        $items = Item::with("itemType")->paginate(1);
+        $items = Item::with("itemType")->paginate(5);
 
         return view("items.table", compact("items"));
     }

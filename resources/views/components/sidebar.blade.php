@@ -29,8 +29,8 @@
 
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Tabel Items</span></a>
             </li>

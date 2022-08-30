@@ -14,8 +14,9 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <h6 class="m-0 font-weight-bold text-primary">Tabel Item</h6>
+        <a href="{{ route('create') }}" class="btn btn-primary fa-pull-right">Tambah Barang</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -40,12 +41,13 @@
                         <td>{{ $item -> nama_barang }}</td>
                         <td>{{ $item -> stock }}</td>
                         <td>{{ $item -> harga }}</td>
-                        <td>
-                            <a href="{{route('edit', $item->id)}}" class="btn btn-warning">Edit</a>
+                        <td class= "d-flex">
+                            <a href="{{route('edit', $item->id)}}" class="btn btn-warning mr-2">Edit</a>
                             <form action="{{route('destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit" class="btn btn-danger">Hapus</button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
