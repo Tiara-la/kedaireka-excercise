@@ -33,9 +33,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($items as $number => $item)
                     <tr>
-                        <th scope="row">{{ $item -> id }}</th>
+                        <th scope="row">{{ $number+1 }}</th>
                         <td>{{ $item -> itemType-> name }}</td>
                         <td>{{ $item -> kode_barang }}</td>
                         <td>{{ $item -> nama_barang }}</td>
@@ -47,13 +47,14 @@
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
                 
             </table>
-            {{ $items->links() }}
+           
         </div>
     </div>
 </div>

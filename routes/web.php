@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -18,9 +19,16 @@ use App\Http\Controllers\ItemController;
 //     return view('welcome');
 // });
 
-Route::get("/", [ItemController::class, "index"]);
-Route::get("/create", [ItemController::class, "create"])->name("create");
-Route::post("/store", [ItemController::class, "store"])->name("store");
-Route::get("/edit/{id}", [ItemController::class, "edit"])->name("edit");
-Route::post("/update/{id}", [ItemController::class, "update"])->name("update");
-Route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function(){
+    Route::get("/", [ItemController::class, "index"]);
+    Route::get("/create", [ItemController::class, "create"])->name("create");
+    Route::post("/store", [ItemController::class, "store"])->name("store");
+    Route::get("/edit/{id}", [ItemController::class, "edit"])->name("edit");
+    Route::post("/update/{id}", [ItemController::class, "update"])->name("update");
+    Route::delete("/destroy/{id}", [ItemController::class, "destroy"])->name("destroy");
+});

@@ -29,8 +29,7 @@ return new class extends Migration
     {
         Schema::table('item', function (Blueprint $table) {
             //
-            $table->dropForeign("items_item_type_id_foreign");
-            $table->dropColumn("item_type_id");
+           
         });
     }
 };

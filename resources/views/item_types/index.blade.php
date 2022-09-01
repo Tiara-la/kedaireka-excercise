@@ -18,36 +18,27 @@
                 <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col">Jenis</th>
-                        <th scope="col">kode_barang</th>
-                        <th scope="col">nama_barang</th>
-                        <th scope="col">stock</th>
-                        <th scope="col">harga</th>
-                        <th scope="col">action</th>
+                        <th scope="col">name</th>
+                        <th scope="col">description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $number => $item)
+                    @foreach ($items as $item)
                     <tr>
-                        <th scope="row">{{ $number+1}}</th>
+                        <th scope="row">{{ $item_types -> id }}</th>
                         <td>{{ $item -> itemType-> name }}</td>
                         <td>{{ $item -> kode_barang }}</td>
-                        <td>{{ $item -> nama_barang }}</td>
-                        <td>{{ $item -> stock }}</td>
-                        <td>{{ $item -> harga }}</td>
                         <td>
                             <a href="{{route('edit', $item->id)}}" class="btn btn-warning">Edit</a>
                             <form action="{{route('destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method("DELETE")
                                 <button type="submit" class="btn btn-danger">Hapus</button>
-                        </form>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-          
+            {{ $items->links() }}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index()
     {
         //
-        $items = Item::with("itemType")->paginate(5);
+        $items = Item::with("itemType")->get();
 
         return view("items.table", compact("items"));
     }
@@ -107,7 +107,8 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        Item::destroy($id);
+        $items = Item::findOrFail($id);
+        $items->delete();
         return redirect("/");
     }
 }
